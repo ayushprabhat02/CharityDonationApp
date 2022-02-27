@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import {
   StyleSheet,
   Text,
@@ -8,15 +10,21 @@ import {
   ScrollView,
   KeyboardAvoidingView
 } from "react-native";
-import Icon from "@expo/vector-icons/AntDesign";
-// import { FaGithub } from "react-icons/fa";
+
 import IconFa from "react-native-vector-icons/FontAwesome";
 import IconFa5 from "react-native-vector-icons/FontAwesome5";
 
 // IMPORTING SCREENS
 import PickerContainer from "../components/PickerContainer";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import CampaignPhotos from "./CampaignPhotos";
+import Payments from "./Payments";
+import PaymentOptions from "./PaymentOptions";
 
 const EducationKit = () => {
+  const navigation = useNavigation();
+  const [amount, setAmount] = useState();
+
   return (
     <KeyboardAvoidingView>
       <ScrollView>
@@ -78,7 +86,10 @@ const EducationKit = () => {
 
           {/* BUTTONS */}
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate("CampaignPhotos")}
+            >
               <Text style={{ fontSize: 20, fontWeight: "400" }}>
                 Campaings photos{" "}
               </Text>
@@ -112,6 +123,8 @@ const EducationKit = () => {
                 <TextInput
                   keyboardType="numeric"
                   placeholder="0"
+                  value={amount}
+                  onChangeText={(text) => setAmount(text)}
                   style={{
                     fontSize: 40,
                     fontWeight: "600",
@@ -121,7 +134,11 @@ const EducationKit = () => {
                 />
               </View>
               <View style={styles.donateButtonContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("PaymentOptions", { amount: amount })
+                  }
+                >
                   <Text style={{ color: "white" }}>DONATE</Text>
                 </TouchableOpacity>
               </View>
@@ -144,7 +161,7 @@ const styles = StyleSheet.create({
     // justifyContent: "center", // y-axis = center
     flex: 1,
     padding: 25,
-    // alignItems: "center" // x-axis = center
+    // alignItems: "center", // x-axis = center
     backgroundColor: "#fff"
   },
   image: {
@@ -157,12 +174,14 @@ const styles = StyleSheet.create({
   sponsoredContainer: {
     padding: 6,
     backgroundColor: "orange",
-    width: 106,
+    width: 110,
     height: 35,
     borderRadius: 7,
     position: "absolute",
     top: 10,
-    left: 10
+    left: 10,
+    alignItems: "center",
+    justifyContent: "center"
   },
   box: {
     width: 180,
@@ -172,7 +191,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     position: "absolute",
     top: 70,
-    right: 10
+    right: 10,
+    backgroundColor: "#E8E6E6"
   },
   buttonContainer: {
     width: "100%"
@@ -183,8 +203,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     borderRadius: 15,
     borderColor: "grey",
-    borderWidth: 0.7,
-    marginTop: 5,
+    borderWidth: 1,
+    marginTop: 10,
     paddingVertical: 12,
     paddingHorizontal: 25,
     backgroundColor: "#fff"

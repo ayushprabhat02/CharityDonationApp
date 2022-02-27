@@ -3,16 +3,16 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  Touchable,
   View,
   TouchableOpacity,
-  Image,
   ScrollView
 } from "react-native";
 import Icon from "@expo/vector-icons/AntDesign";
 
 // IMPORTING SCREENS
 import EducationKit from "./EducationKit";
+import FullDayMeal from "./FullDayMeal";
+import Programs from "../components/Programs";
 
 // IMPORTING auth from FIREBASE
 import { auth } from "../firebase";
@@ -22,7 +22,6 @@ import { auth } from "../firebase";
 
 const Donation = () => {
   const navigation = useNavigation();
-
   const handleSignOut = () => {
     auth
       .signOut()
@@ -46,101 +45,21 @@ const Donation = () => {
         <Text style={{ fontSize: 25, padding: 20, color: "#6c6c71" }}>
           Select Donation programs{" "}
         </Text>
-        {/* <Icon name="arrowright" size={20} /> */}
-        {/* Education kits */}
-        <View style={styles.programContainer}>
-          <View style={{ flex: 1 }} style={styles.imageContainer}>
-            <Image
-              source={require("../images/poor2.jpeg")}
-              style={styles.image}
-            />
-            <TouchableOpacity style={styles.textContainer}>
-              <Text style={styles.imageText}>DONATE</Text>
-            </TouchableOpacity>
-          </View>
 
-          <View
-            style={{
-              flex: 2,
-              paddingBottom: 20,
-              paddingHorizontal: 15,
-              justifyContent: "center",
-              alignItems: "flex-start"
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => navigation.navigate("EducationKit")}
-            >
-              <Text style={{ fontSize: 23, fontWeight: "700" }}>
-                Education kits for poor childrens
-              </Text>
-              <Text
-                style={{ paddingVertical: 8, color: "#888e8f", fontSize: 18 }}
-              >
-                {" "}
-                by save the children
-              </Text>
-              <Text
-                style={{
-                  paddingVertical: 8,
-                  fontSize: 20,
-                  color: "#10a0b8",
-                  fontWeight: "500"
-                }}
-              >
-                {" "}
-                ₹ 16K Raised
-              </Text>
-              <Icon name="arrowright" color="darkgrey" size={28} />
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* full day meal */}
-        <View style={styles.programContainer}>
-          <View style={{ flex: 1 }} style={styles.imageContainer}>
-            <Image
-              source={require("../images/poor3.jpg")}
-              style={styles.image}
-            />
-            <TouchableOpacity style={styles.textContainer}>
-              <Text style={styles.imageText}>DONATE</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View
-            style={{
-              flex: 2,
-              paddingHorizontal: 15,
-              paddingBottom: 20,
-              justifyContent: "center",
-              alignItems: "flex-start"
-            }}
-          >
-            <TouchableOpacity>
-              <Text style={{ fontSize: 23, fontWeight: "700" }}>
-                Full day meal for the street children
-              </Text>
-              <Text
-                style={{ color: "#888e8f", paddingVertical: 8, fontSize: 18 }}
-              >
-                by child care
-              </Text>
-              <Text
-                style={{
-                  paddingVertical: 8,
-                  fontSize: 20,
-                  color: "#10a0b8",
-                  fontWeight: "500"
-                }}
-              >
-                {" "}
-                ₹ 1.3 lakhs Raised
-              </Text>
-              <Icon name="arrowright" color="darkgrey" size={28} />
-            </TouchableOpacity>
-          </View>
-        </View>
+        <Programs
+          title={"Education kits for poor childrens"}
+          ngo={"by save the children"}
+          amountRaised={"₹ 16K Raised"}
+          imageSource={require("../images/poor2.jpeg")}
+          onPressFunction={() => navigation.navigate("EducationKit")}
+        />
+        <Programs
+          title={"Full Day Meal for street child"}
+          ngo={"by Kalpan Foundation"}
+          amountRaised={"₹ 1.2 Lakhs Raised"}
+          imageSource={require("../images/poor13.jpg")}
+          onPressFunction={() => navigation.navigate("FullDayMeal")}
+        />
       </View>
     </ScrollView>
   );
@@ -165,7 +84,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "700",
-    fontSize: 16
+    fontSize: 15
   },
   programContainer: {
     flexDirection: "row",
@@ -190,5 +109,34 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     color: "white"
-  }
+  },
+  writeTaskWrapper: {
+    // position: "absolute",
+    // bottom: 60,
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
+  input: {
+    paddingVertical: 15,
+    width: "250",
+    paddingHorizontal: 15,
+    backgroundColor: "white",
+    borderRadius: 60,
+    borderColor: "#C0C0C0",
+    borderWidth: 1,
+    width: 250
+  },
+  addWrapper: {
+    width: 60,
+    height: 60,
+    backgroundColor: "#fff",
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    borderColor: "#C0C0C0",
+    borderWidth: 1
+  },
+  addText: {}
 });

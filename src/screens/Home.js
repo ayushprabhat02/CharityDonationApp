@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  Video
-} from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 // IMPORTING ICON PACK
 import Icon from "react-native-vector-icons/Entypo";
@@ -16,7 +9,12 @@ import IconMCI from "react-native-vector-icons/MaterialCommunityIcons";
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 34, fontWeight: "700" }}>
+      <Text
+        style={{
+          fontSize: 34,
+          fontWeight: "700"
+        }}
+      >
         help
         <Text
           style={{
@@ -110,8 +108,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 30,
+    backgroundColor: "white",
+    justifyContent: "center"
     // alignItems: "center"
-    backgroundColor: "white"
   },
   video: {
     width: 400,
@@ -145,5 +144,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12
+  },
+  linearGradient: {
+    flex: 1,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
   }
 });

@@ -10,7 +10,7 @@ const PickerContainer = () => {
         style={{ width: 270 }}
         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
       >
-        <Picker.Item label="Monthly Basis" value="monthly" />
+        <Picker.Item label="Monthly " value="monthly" />
         <Picker.Item label="One Time" value="oneTime" />
       </Picker>
     </View>
