@@ -110,10 +110,7 @@ const EducationKit = () => {
 
             {/* Amount and Donate Button */}
             <View style={styles.amountAndDonationConatiner}>
-              <View
-                style={styles.inputContainer}
-                style={{ flexDirection: "row" }}
-              >
+              <View style={styles.inputContainer}>
                 {/* RUPEE ICON */}
                 <View style={{ justifyContent: "center", paddingRight: 5 }}>
                   <IconFa name="rupee" color="black" size={32} />
@@ -223,7 +220,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center"
   },
-  inputContainer: { width: 300 },
+  inputContainer: { width: 300, flexDirection: "row" },
   donateButtonContainer: {
     width: 94,
     height: 94,

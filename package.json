@@ -23,6 +23,7 @@
     "react-icons": "^4.3.1",
     "react-native": "0.64.3",
     "react-native-qrcode-svg": "^6.1.2",
+    "react-native-razorpay": "^2.2.8",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.1",
     "react-native-svg": "^12.1.1",

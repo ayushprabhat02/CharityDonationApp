@@ -8,6 +8,8 @@ import {
   ScrollView,
   KeyboardAvoidingView
 } from "react-native";
+import React, { useState } from "react";
+
 import Icon from "@expo/vector-icons/AntDesign";
 // import { FaGithub } from "react-icons/fa";
 import IconFa from "react-native-vector-icons/FontAwesome";
@@ -17,9 +19,11 @@ import IconFa5 from "react-native-vector-icons/FontAwesome5";
 import PickerContainer from "../components/PickerContainer";
 import { useNavigation } from "@react-navigation/native";
 import CampaignPhotos from "./CampaignPhotos";
+import PaymentOptions from "./PaymentOptions";
 
 const FullDayMeal = () => {
   const navigation = useNavigation();
+  const [amount, setAmount] = useState();
   return (
     <KeyboardAvoidingView>
       <ScrollView>
@@ -119,6 +123,8 @@ const FullDayMeal = () => {
                 <TextInput
                   keyboardType="numeric"
                   placeholder="0"
+                  value={amount}
+                  onChangeText={(text) => setAmount(text)}
                   style={{
                     fontSize: 40,
                     fontWeight: "600",
@@ -128,7 +134,11 @@ const FullDayMeal = () => {
                 />
               </View>
               <View style={styles.donateButtonContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("PaymentOptions", { amount: amount })
+                  }
+                >
                   <Text style={{ color: "white" }}>DONATE</Text>
                 </TouchableOpacity>
               </View>

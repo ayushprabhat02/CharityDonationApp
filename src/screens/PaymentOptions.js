@@ -115,6 +115,7 @@ import React, { useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import Buttons from "../components/Buttons";
 import Payments from "./Payments";
+import QRCode from "./QRCode";
 
 const PaymentOptions = () => {
   const route = useRoute();
@@ -136,7 +137,7 @@ const PaymentOptions = () => {
       <Buttons
         title="UPI / QR Code"
         iconName="upi"
-        onPressFunction={() => navigation.navigate("Payments")}
+        onPressFunction={() => navigation.navigate("QRCode")}
       />
     </View>
   );

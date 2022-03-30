@@ -17,6 +17,7 @@ import ShowImage from "./src/screens/ShowImage";
 import StripApp from "./src/screens/StripApp";
 import Payments from "./src/screens/Payments";
 import PaymentOptions from "./src/screens/PaymentOptions";
+import QRCode from "react-native-qrcode-svg";
 
 // import { createDrawerNavigator } from "@react-navigation/drawer";
 
@@ -47,6 +48,7 @@ export default function App() {
           <Stack.Screen name="PaymentOptions" component={PaymentOptions} />
           <Stack.Screen name="Payments" component={Payments} />
           <Stack.Screen name="StripApp" component={StripApp} />
+          <Stack.Screen name="QRCode" component={QRCode} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
