@@ -1,0 +1,2 @@
+# CharityDonationApp React Native Project
+
